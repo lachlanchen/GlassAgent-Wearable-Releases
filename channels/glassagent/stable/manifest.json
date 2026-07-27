@@ -3,7 +3,7 @@
   "profile": "glassagent",
   "channel": "stable",
   "releaseId": "20260727-build20",
-  "publishedAt": "2026-07-27T16:21:47Z",
+  "publishedAt": "2026-07-27T16:23:23Z",
   "displayName": "GlassAgent Glasses",
   "packageName": "art.lazying.glassagent.glasses",
   "activityName": "art.lightmind.glasses.GlassesActivity",

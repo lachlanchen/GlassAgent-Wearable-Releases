@@ -166,7 +166,10 @@ if [[ "$publish" == "true" ]]; then
     gh release create "$tag" --repo "$repo" \
       --title "Wearable companion ${version_name} (${version_code})" \
       --notes "Signed companion software for supported AI glasses. Verify through the product app or the signed channel manifest."
-  gh release upload "$tag" "$apk#$asset_name" --repo "$repo" --clobber
+  staging_directory="$(mktemp -d)"
+  trap 'rm -rf "$staging_directory"' EXIT
+  cp "$apk" "${staging_directory}/${asset_name}"
+  gh release upload "$tag" "${staging_directory}/${asset_name}" --repo "$repo" --clobber
 fi
 
 printf 'Prepared %s\n' "$manifest"
