@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "profile": "lightmind",
+  "channel": "stable",
+  "releaseId": "20260727-build20",
+  "publishedAt": "2026-07-27T16:20:15Z",
+  "displayName": "LightMind Glasses",
+  "packageName": "art.lightmind.glasses",
+  "activityName": "art.lightmind.glasses.GlassesActivity",
+  "versionName": "0.2.15",
+  "versionCode": 20,
+  "minAndroidSdk": 28,
+  "fileSizeBytes": 7277860,
+  "sha256": "36e5600afe3a089ca1ccdac62e3774237d7e3f7b713c4a8fce53b230f7440242",
+  "signerSha1": "294c8eaa3e922d461f69e385df143b261d0b4865",
+  "signerSha256": "24e9af7fc69edf7e204dbd404515bdfdf66fbb37a331241cf9eedc032229539e",
+  "artifactUrl": "https://github.com/lachlanchen/GlassAgent-Wearable-Releases/releases/download/wearable-v0.2.15-build20/lightmind-glasses-display-0.2.15-20.apk",
+  "setupUrl": "https://lachlanchen.github.io/GlassAgent-Wearable-Releases/?profile=lightmind"
+}

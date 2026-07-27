@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <meta name="description" content="Verified companion software setup for supported AI glasses.">
+    <title>Glasses companion setup</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header>
+      <div class="identity">
+        <span class="mark" aria-hidden="true">GA</span>
+        <div>
+          <strong>Glasses companion setup</strong>
+          <span>Verified release channel</span>
+        </div>
+      </div>
+      <label>
+        Product
+        <select id="profile">
+          <option value="lightmind">LightMind Agent</option>
+          <option value="glassagent">GlassAgent</option>
+        </select>
+      </label>
+    </header>
+
+    <main>
+      <section class="release" aria-labelledby="release-title">
+        <div class="status-line">
+          <span class="status" id="status">Checking release</span>
+          <span id="channel">Stable</span>
+        </div>
+        <h1 id="release-title">Wearable companion</h1>
+        <p id="summary">Loading the signed release manifest.</p>
+
+        <dl>
+          <div><dt>Version</dt><dd id="version">-</dd></div>
+          <div><dt>Package</dt><dd id="package">-</dd></div>
+          <div><dt>Size</dt><dd id="size">-</dd></div>
+          <div><dt>SHA-256</dt><dd id="digest">-</dd></div>
+        </dl>
+
+        <div class="actions">
+          <a class="primary disabled" id="download" aria-disabled="true">Download APK</a>
+          <button id="copy" type="button" disabled>Copy installer link</button>
+        </div>
+      </section>
+
+      <section aria-labelledby="setup-title">
+        <h2 id="setup-title">Install safely</h2>
+        <ol>
+          <li>Use the matching product app on Android to check and verify this release.</li>
+          <li>Connect supported glasses and approve the install in the phone app.</li>
+          <li>Keep the existing glasses app when the phone reports a signer or existing-package conflict.</li>
+        </ol>
+        <p class="notice">
+          iPhone and iPad can verify and share this installer, but iOS cannot execute
+          an Android APK. Use a supported Android or USB setup path for installation.
+        </p>
+      </section>
+
+      <section aria-labelledby="security-title">
+        <h2 id="security-title">Verification</h2>
+        <p>
+          Product apps verify the signed manifest, artifact URL, byte count, file
+          digest, package ID, activity, and APK certificate. No existing package is
+          silently removed or replaced.
+        </p>
+        <p class="fingerprint">
+          Release key SHA-256<br>
+          <code>0c10bd1647a87dfe27e05129bfc3869df1d2c0a6ad7e8300fc981201d9c67c31</code>
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <a href="https://github.com/lachlanchen/GlassAgent-Wearable-Releases">Release records</a>
+    </footer>
+    <script src="app.js"></script>
+  </body>
+</html>
+

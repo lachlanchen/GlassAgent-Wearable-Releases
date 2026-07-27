@@ -1,0 +1,7 @@
+.DS_Store
+*.apk
+*.pem
+*.key
+private/
+work/
+
