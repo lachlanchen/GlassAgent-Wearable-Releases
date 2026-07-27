@@ -30,6 +30,9 @@ signing certificate before enabling any provisioning action.
 Publishing is intentionally local and fail-closed. The distribution private key
 stays outside this repository.
 
+The script supports Linux and macOS. Put Android SDK `aapt` and `apksigner` from
+the same build-tools directory on `PATH`, and install `jq`, `openssl`, and `gh`.
+
 ```bash
 scripts/publish_release.sh \
   --profile lightmind \
@@ -52,4 +55,3 @@ verifies the channel files.
 - Existing glasses packages are never silently uninstalled or replaced.
 
 See the [setup site](https://lachlanchen.github.io/GlassAgent-Wearable-Releases/).
-

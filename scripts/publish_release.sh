@@ -40,12 +40,24 @@ done
   exit 2
 }
 
-for command in aapt apksigner jq openssl gh sha256sum; do
+for command in aapt apksigner jq openssl gh; do
   command -v "$command" >/dev/null || {
     echo "Required command not found: $command" >&2
     exit 1
   }
 done
+
+sha256_file() {
+  if command -v sha256sum >/dev/null; then
+    sha256sum "$1" | cut -d' ' -f1
+  else
+    shasum -a 256 "$1" | cut -d' ' -f1
+  fi
+}
+
+file_size() {
+  stat -c %s "$1" 2>/dev/null || stat -f %z "$1"
+}
 
 case "$profile" in
   lightmind)
@@ -98,8 +110,8 @@ for forbidden in '.lc' '.jks' '.keystore' 'private.pem' 'credentials'; do
   fi
 done
 
-file_size="$(stat -c %s "$apk")"
-file_sha256="$(sha256sum "$apk" | cut -d' ' -f1)"
+file_size="$(file_size "$apk")"
+file_sha256="$(sha256_file "$apk")"
 tag="wearable-v${version_name}-build${version_code}"
 asset_name="${profile}-glasses-display-${version_name}-${version_code}.apk"
 artifact_url="https://github.com/${repo}/releases/download/${tag}/${asset_name}"
@@ -148,7 +160,7 @@ jq -n \
   }' > "$manifest"
 
 openssl dgst -sha256 -sign "$private_key" -out "${signature}.bin" "$manifest"
-base64 -w0 "${signature}.bin" > "$signature"
+openssl base64 -A -in "${signature}.bin" > "$signature"
 printf '\n' >> "$signature"
 rm -f "${signature}.bin"
 
@@ -157,7 +169,7 @@ public_key="$(dirname "$private_key")/public.pem"
   echo "Expected sibling public key not found: $public_key" >&2
   exit 1
 }
-base64 -d "$signature" > "${signature}.verify.bin"
+openssl base64 -d -A -in "$signature" -out "${signature}.verify.bin"
 openssl dgst -sha256 -verify "$public_key" -signature "${signature}.verify.bin" "$manifest"
 rm -f "${signature}.verify.bin"
 
